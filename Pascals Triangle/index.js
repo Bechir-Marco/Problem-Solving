@@ -13,4 +13,3 @@ var generate = function ( numRows) {
     }
     return pascalTriangle
 };
-console.log(generate(3));
