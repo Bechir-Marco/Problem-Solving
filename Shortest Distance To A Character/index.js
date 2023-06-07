@@ -8,6 +8,7 @@ function shortestToChar(s, c) {
       prev = i;
     }
     answer[i] = i - prev;
+    
   }
   prev = Infinity;
 
@@ -17,6 +18,7 @@ function shortestToChar(s, c) {
       prev = i;
     }
     answer[i] = Math.min(answer[i], prev - i);
+   
   }
 
   return answer;
