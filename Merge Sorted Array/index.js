@@ -1,14 +1,24 @@
 var merge = function (nums1, m, nums2, n) {
-    let k =0
-    
-    for (i = 0; i < m+n; i++) {
-       
-        if (nums1[i] == 0) {
-            
-            nums1[i] = nums2[k]
-            k++       
-        }
+  let i = 0
+  let j = 0
+  while (i < m) {
+    j=0
+    while (j<n) {
+      if (nums1[i] > nums2[j]) {
+        let temp = nums1[i]
+        nums1[i] = nums2[j]
+        nums2[j] = temp
+        j++
+      }else j++
     }
-    return nums1.sort()
+    i++
+  }
+  let cpt =0
+  while (cpt <  n) {
+    nums1[m + cpt] = nums2 [cpt]
+    cpt++
+  }
+  nums1.sort((a, b) => a - b)
+  return nums1
 };
-console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));
+merge([1, 2, 3, 0, 0, 0], 3, [2,5,6], 3);
