@@ -1,23 +1,18 @@
 var maxArea = function (height) {
-    let i = 1
-    let j = height.length
-    let max = 0
-    let res = 0
-    
+  let i = 0;
+  let j = height.length - 1;
+  let max = 0;
+
     while (i < j) {
-            
-            if (height[i-1] < height[j-1]) {
-                res = height[i-1] * ( j - i) 
-               
-            } else {
-                res = height[j-1] * (j - i)
-            }
-            if (max < res) max = res; 
-            i++ 
-        
-    }
-   
-    return max
-    
+     width = j-i
+      const h = Math.min(height[i], height[j]);
+        waterContainer = width * h
+        if (max < waterContainer)max =waterContainer
+        if (height[i] < height[j]) i++
+        else j--
+ }
+
+  return max;
 };
-maxArea([2, 3, 4, 5, 18, 17, 6]);
+
+maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]);
