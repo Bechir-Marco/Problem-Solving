@@ -32,11 +32,11 @@
 // };
 var threeSum = function (nums) {
   nums.sort((a, b) => a - b);
- 
+  let result = [];
 
   for (let i = 0; i < nums.length - 2; i++) {
     if (i > 0 && nums[i] === nums[i - 1]) {
-      continue; 
+      continue;
     }
 
     let lowIndex = i + 1;
@@ -46,7 +46,7 @@ var threeSum = function (nums) {
       const sum = nums[i] + nums[lowIndex] + nums[higherIndex];
 
       if (sum === 0) {
-        result.add([nums[i], nums[lowIndex], nums[higherIndex]]);
+        result.push([nums[i], nums[lowIndex], nums[higherIndex]]);
         lowIndex++;
         higherIndex--;
 
@@ -56,8 +56,11 @@ var threeSum = function (nums) {
         ) {
           lowIndex++;
         }
-        while (left < right && nums[higherIndex] === nums[higherIndex + 1]) {
-          right--;
+        while (
+          lowIndex < higherIndex &&
+          nums[higherIndex] === nums[higherIndex + 1]
+        ) {
+          higherIndex--;
         }
       } else if (sum < 0) {
         lowIndex++;
@@ -67,7 +70,7 @@ var threeSum = function (nums) {
     }
   }
 
-  return result
+  return result;
 };
 
 console.log(threeSum([-2,0,1,1,2]));
