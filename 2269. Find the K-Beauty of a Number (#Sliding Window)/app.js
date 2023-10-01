@@ -4,23 +4,17 @@
  * @return {number}
  */
 var divisorSubstrings = function (num, k) {
+    const numToString = num.toString();
+    let c = 0;
 
-    let s1 = ''
-    let c =0
-    for (let i = 0; i < num.length; i++) {
-        
-        const s1 = num.substring(i, i + k);
+    for (let i = 0; i <= numToString.length - k; i++) {
+        const s1 = numToString.substring(i, i + k);
+        const substringInt = parseInt(s1);
 
-        if ( !(/^0+$/.test(s1))) {
-            
-            if ((parseInt(s1) % k) === 0) {
-                console.log(parseInt(s1));
-                c++;      
-            }
+        if (s1.length === k && num % substringInt === 0 && !(/^0+$/).test(substringInt)) {
+            c++;
         }
-       
-           
     }
-    return c
+
+    return c;
 };
-console.log(divisorSubstrings("430043",2))
